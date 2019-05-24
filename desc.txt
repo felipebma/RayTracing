@@ -1,0 +1,17 @@
+#comentário
+
+#resolução
+res 1920 1080
+
+#câmera
+camera 5 3 4 0 0 -1 0 1 0 30 7
+
+#materiais
+material floor 0.4 1 0.1 0.7 0 1 1
+material material1 1 0.3 0.8 1 1 1 1
+material material2 0.2 0.5 1 1 1 1 1
+
+#objetos
+sphere 1 -100.5 -1 100 floor
+sphere -1 1 -1 1 material1
+sphere 1 1 -1 1 material2
