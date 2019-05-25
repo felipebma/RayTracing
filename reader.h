@@ -10,9 +10,7 @@ class reader {
         pair<float,float> res;
         map<string,float> camInfo; //px py pz tx ty tz ux uy uz fov f
         map<string,map<string,float>> materialInfo; //name r g b kd ks ke alpha
-        map<string,float> material;
         vector<map<string,float>> objectsInfo; // cx cy cz r red green blue kd ks ke alpha
-        map<string,float> object;
 
         reader(){
             string s, materialName;
@@ -38,6 +36,8 @@ class reader {
                     camInfo.insert({"f",f});
                 }else if (s == "material"){
                     cin >> materialName >> r >> g >> b >> kd >> ks >> ke >> alpha;
+                    cout << "rgb: " << r << " " << g << " " << b << endl;
+                    map<string,float> material;
                     material.insert({"r",r});
                     material.insert({"g",g});
                     material.insert({"b",b});
@@ -48,6 +48,8 @@ class reader {
                     materialInfo.insert({materialName,material});                        
                 }else if (s == "sphere"){
                     cin >> cx >> cy >> cz >> raio >> materialName;
+                    map<string,float> object;
+                    map<string,float> material;
                     material = materialInfo.at(materialName);
                     object.insert({"cx",cx});
                     object.insert({"cy",cy});

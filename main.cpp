@@ -84,15 +84,17 @@ int main() {
     */
     for(int i=0;i<desc.objectsInfo.size();i++){
         map<string,float> obj = desc.objectsInfo[i];
+        cout << i << endl << "cx: " << obj.at("cx") << " r: " << obj.at("r") << endl;
         list[i] = new sphere(vec3(obj.at("cx"),obj.at("cy"),obj.at("cz")),obj.at("raio"), new material(vec3(obj.at("r"), obj.at("g"), obj.at("b")), obj.at("kd"), obj.at("ks"), obj.at("ke"), obj.at("alpha")));
     }
     hitable *world = new hitable_list(list, 3);
-    light ligthcenter(vec3(1.0, 1.0, 1.0), vec3(-5.0, 1000.0, 701.0));
+    light ligthcenter(vec3(1.0, 1.0, 1.0), vec3(-5.0, 1000.0, -701.0));
     //(vec3 lookfrom, vec3 lookat, vec3 vup, float vfov, float aspect
-    vec3 lookfrom  = vec3(raio+desc.camInfo.at("x"), desc.camInfo.at("y"), desc.camInfo.at("z"));
+    vec3 lookfrom  = vec3(raio+desc.camInfo.at("px"), desc.camInfo.at("py"), desc.camInfo.at("pz"));
     vec3 lookat = vec3(raio+desc.camInfo.at("tx"),desc.camInfo.at("ty"),desc.camInfo.at("tz"));
     vec3 perpendicular = vec3(desc.camInfo.at("ux"),desc.camInfo.at("uy"),desc.camInfo.at("uz"));
     float fov = desc.camInfo.at("fov");
+
     camera cam(lookfrom, lookat, perpendicular, fov, float(x)/float(y), 0.2 , (lookfrom-lookat).length());//Pos de origem, Ponto de mira, vetor perpendicular, (FOV) , Aspect, Abertura de lente e Distancia da lente
     for(float i=y-1; i>=0; i--){
         for(float j=0.0; j<x; j++){

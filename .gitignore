@@ -1,6 +1,7 @@
 # compiled output
 !*.ppm
 !*.exe
+!*.out
 
 # IDE - VSCode
 .vscode/
@@ -8,5 +9,6 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history
+
 
